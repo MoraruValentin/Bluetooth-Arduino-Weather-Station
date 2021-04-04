@@ -25,13 +25,12 @@ public class MainActivity extends Activity {
     private BluetoothSocket mBTSocket;
     private ReadInput mReadThread = null;
     private boolean mIsUserInitiatedDisconnect = false;
-    private Button btnDisconnect;
+    private Button btnPrint;
     private Button btnON;
     private Button btnOFF;
     private Button btnBlue;
     private Button btnGreen;
     private Button btnRed;
-    private Button btnChangeColor;
     private boolean mIsBluetoothConnected = false;
     private BluetoothDevice mDevice;
     private ProgressDialog progressDialog;
@@ -50,16 +49,16 @@ public class MainActivity extends Activity {
 
         Log.d(TAG, "Ready");
 
-        btnDisconnect = (Button) findViewById(R.id.btnDisconnect);
+        btnPrint = (Button) findViewById(R.id.btnPrint);
         btnON = (Button) findViewById(R.id.btnOn);
         btnOFF = (Button) findViewById(R.id.btn_off);
         btnBlue = (Button) findViewById(R.id.blue);
         btnGreen = (Button) findViewById(R.id.green);
         btnRed = (Button) findViewById(R.id.red);
-        btnChangeColor = (Button) findViewById(R.id.colorChange);
 
 
-        btnDisconnect.setOnClickListener(new OnClickListener() {
+
+        btnPrint.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -99,7 +98,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 try {
-                    btnDisconnect.setText("");
+                    btnPrint.setText("");
                     mBTSocket.getOutputStream().write("a".toString().getBytes());
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -113,7 +112,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 try {
-                    btnDisconnect.setText("");
+                    btnPrint.setText("");
                     mBTSocket.getOutputStream().write("b".toString().getBytes());
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -126,7 +125,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 try {
-                    btnDisconnect.setText("");
+                    btnPrint.setText("");
                     mBTSocket.getOutputStream().write("c".toString().getBytes());
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -134,19 +133,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        btnChangeColor.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                try {
-                    mBTSocket.getOutputStream().write("4".toString().getBytes());
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        });
-
 
     }
 
@@ -179,7 +165,7 @@ public class MainActivity extends Activity {
                         for (i = 0; i < buffer.length && buffer[i] != 0; i++) {
                         }
                         final String strInput = new String(buffer, 0, i);
-                        btnDisconnect.setText(strInput);
+                        btnPrint.setText(strInput);
 
                     }
                     Thread.sleep(500);
