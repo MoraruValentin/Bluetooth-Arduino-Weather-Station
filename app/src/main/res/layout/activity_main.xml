@@ -38,7 +38,7 @@
         android:layout_marginBottom="8dp"
         android:layout_weight="2"
         android:padding="5dp"
-        android:text="@string/on"
+        android:text="@string/status"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -57,7 +57,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="5"
-        android:text="@string/off"
+        android:text="@string/disconnect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -77,13 +77,14 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/holo_red_dark"
-        android:text="@string/red"
+        android:text="@string/dht11"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_off"
         app:layout_constraintVertical_bias="1.0" />
+
 
     <Button
         android:id="@+id/green"
@@ -95,15 +96,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/green"
+        android:background="#8C4C33"
+        android:text="@string/fc28"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toEndOf="@+id/red"
         app:layout_constraintTop_toBottomOf="@+id/btn_off"
         app:layout_constraintVertical_bias="1.0" />
-
 
     <Button
         android:id="@+id/blue"
@@ -116,7 +116,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/holo_blue_dark"
-        android:text="@string/blue"
+        android:text="@string/fc37"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

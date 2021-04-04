@@ -9,4 +9,8 @@
     <string name="blue">BLUE</string>
     <string name="green">GREEN</string>
     <string name="red">RED</string>
+    <string name="dht11">DHT11</string>
+    <string name="fc28">FC28</string>
+    <string name="fc37">FC37</string>
+    <string name="status">Check Status</string>
 </resources>

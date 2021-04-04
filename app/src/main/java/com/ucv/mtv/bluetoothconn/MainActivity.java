@@ -56,26 +56,12 @@ public class MainActivity extends Activity {
         btnGreen = (Button) findViewById(R.id.green);
         btnRed = (Button) findViewById(R.id.red);
 
-
-
-        btnPrint.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                mIsUserInitiatedDisconnect = true;
-                new DisConnectBT().execute();
-            }
-        });
         btnOFF.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                try {
-                    mBTSocket.getOutputStream().write("0".toString().getBytes());
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                mIsUserInitiatedDisconnect = true;
+                new DisConnectBT().execute();
             }
         });
 
