@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BluetoothConn</string>
+    <string name="search_to_pair_device">Search to pair device</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="change_led_colors">Change LED COLORS</string>
+    <string name="blue">BLUE</string>
+    <string name="green">GREEN</string>
+    <string name="red">RED</string>
+</resources>

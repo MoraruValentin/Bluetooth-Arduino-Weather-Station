@@ -1,0 +1,88 @@
+#include "DHT.h"
+#include <SoftwareSerial.h>
+SoftwareSerial bluetooth(0, 1);
+int humPin = A0; 
+int humValue;
+int rainPin = A1;
+int rainValue;
+const int rainD = 4;
+const int humD = 5;
+char flag = 'x';
+#define DHTPIN 12
+#define DHTTYPE DHT11 
+// lowest and highest sensor readings:
+const int sensorMin = 0;     // sensor minimum
+const int sensorMax = 1024;  // sensor maximum
+
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  bluetooth.begin(9600);
+  dht.begin();
+  delay(2000);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+ if (bluetooth.available())
+ { 
+   flag = bluetooth.read();
+ }
+    
+ if (flag == 'a') 
+ { 
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  float f = dht.readTemperature(true);
+  
+  if (isnan(h) || isnan(t) || isnan(f)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return;
+  }
+
+  float hif = dht.computeHeatIndex(f, h);
+  float hic = dht.computeHeatIndex(t, h, false);
+  Serial.print(F("Humidity: "));
+  Serial.print(h);
+  Serial.print(F("%  Temperature: "));
+  Serial.print(t);
+  Serial.print(F("°C "));
+  Serial.print(f);
+  Serial.print(F("°F  Heat index: "));
+  Serial.print(hic);
+  Serial.print(F("°C "));
+  Serial.print(hif);
+  Serial.println(F("°F")); 
+ } 
+ else if (flag == 'b') 
+ { 
+  humValue = analogRead(humPin);
+  float humProc = (1024 - humValue) / (1024 / 100 );
+  Serial.println("Soil Humidity Value : ");
+  Serial.print(humProc);
+  Serial.print("%");
+  Serial.println(" ");
+ } 
+ else if (flag == 'c') 
+ { 
+  rainValue = analogRead(rainPin);
+  float rainProc = (1024 - rainValue) / (1024 / 100 );
+  Serial.println("Rain : ");
+    if(rainProc < 33)
+    {
+      Serial.println("no rain");
+    }
+    if((rainProc >= 33) && (rainProc <= 66))
+    {
+      Serial.println("light rain");
+    }
+    if(rainProc > 66)
+    {
+      Serial.println("heavy rain");
+    }
+ } 
+
+  delay(2000);        // delay in between reads for stability 
+}
