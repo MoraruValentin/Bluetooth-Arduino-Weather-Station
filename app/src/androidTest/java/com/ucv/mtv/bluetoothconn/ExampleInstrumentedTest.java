@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.algonquincollege.skai0001.bluetoothconn", appContext.getPackageName());
+        assertEquals("com.ucv.mtv.bluetoothconn", appContext.getPackageName());
     }
 }

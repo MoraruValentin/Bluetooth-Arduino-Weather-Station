@@ -28,12 +28,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * HC06 bluetooth and arduino to light up diff RGB colors
- *
- * @author Hasan Skaiky
- */
-
 public class Homescreen extends AppCompatActivity {
 
     private Button btnSearch;
@@ -43,11 +37,11 @@ public class Homescreen extends AppCompatActivity {
     private static final int BT_ENABLE_REQUEST = 10; // This is the code we use for BT Enable
     private UUID deviceUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // Standard SPP UUID
     private int mBufferSize = 50000; //Default
-    public static final String DEVICE_EXTRA = "com.algonquincollege.skai0001.bluetoothconn.SOCKET";
-    public static final String DEVICE_UUID = "com.algonquincollege.skai0001.bluetoothconn.uuid";
-    private static final String DEVICE_LIST = "com.algonquincollege.skai0001.bluetoothconn.devicelist";
-    private static final String DEVICE_LIST_SELECTED = "com.algonquincollege.skai0001.bluetoothconn.devicelistselected";
-    public static final String BUFFER_SIZE = "com.algonquincollege.skai0001.bluetoothconn.buffersize";
+    public static final String DEVICE_EXTRA = "com.ucv.mtv.bluetoothconn.SOCKET";
+    public static final String DEVICE_UUID = "com.ucv.mtv.bluetoothconn.uuid";
+    private static final String DEVICE_LIST = "com.ucv.mtv.bluetoothconn.devicelist";
+    private static final String DEVICE_LIST_SELECTED = "com.ucv.mtv.bluetoothconn.devicelistselected";
+    public static final String BUFFER_SIZE = "com.ucv.mtv.bluetoothconn.buffersize";
     private static final String TAG = "bluetoothcon-Homescreen";
 
     @Override
