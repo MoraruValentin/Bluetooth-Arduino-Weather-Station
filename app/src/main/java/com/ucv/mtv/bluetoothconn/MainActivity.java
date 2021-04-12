@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -120,6 +125,8 @@ public class MainActivity extends Activity {
             }
         });
 
+        createNotificationChannel();
+
     }
 
     private class ReadInput implements Runnable {
@@ -152,6 +159,9 @@ public class MainActivity extends Activity {
                         }
                         final String strInput = new String(buffer, 0, i);
                         btnPrint.setText(strInput);
+                        if(strInput.contains("heavy")){
+                            sendNotification();
+                        }
 
                     }
                     Thread.sleep(500);
@@ -287,4 +297,44 @@ public class MainActivity extends Activity {
 
     }
 
+    public void sendNotification() {
+        getNotificationBuilder();
+        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
+        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+    }
+
+    // Create a NotificationChannel
+    NotificationChannel notificationChannel = new NotificationChannel(PRIMARY_CHANNEL_ID,
+            "Mascot Notification", NotificationManager
+            .IMPORTANCE_HIGH);
+
+    private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
+    private NotificationManager mNotifyManager;
+
+    public void createNotificationChannel() {
+        mNotifyManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >=
+                android.os.Build.VERSION_CODES.O) {
+            // Create a NotificationChannel
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notification from Weather Station");
+            mNotifyManager.createNotificationChannel(notificationChannel);
+        }
+    }
+    private static final int NOTIFICATION_ID = 0;
+    private NotificationCompat.Builder getNotificationBuilder(){
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent notificationPendingIntent = PendingIntent.getActivity(this,
+                NOTIFICATION_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID)
+                .setContentTitle("Heavy rain in the area!")
+                .setContentText("The FC37 sensor detected a large quantity of rain in the area.")
+                .setSmallIcon(R.drawable.ic_rain)
+                .setContentIntent(notificationPendingIntent)
+                .setAutoCancel(true);
+        return notifyBuilder;
+    }
 }
