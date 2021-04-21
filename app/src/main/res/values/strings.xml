@@ -2,6 +2,7 @@
     <string name="app_name">BluetoothConn</string>
     <string name="search_to_pair_device">Search to pair device</string>
     <string name="connect">Connect</string>
+    <string name="info">Info</string>
     <string name="disconnect">Disconnect</string>
     <string name="on">ON</string>
     <string name="off">OFF</string>
@@ -13,4 +14,5 @@
     <string name="fc28">FC28</string>
     <string name="fc37">FC37</string>
     <string name="status">Check Status</string>
+    <string name="activity2_name">Info Activity</string>
 </resources>

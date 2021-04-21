@@ -67,7 +67,7 @@
 
 
     <Button
-        android:id="@+id/red"
+        android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -87,7 +87,7 @@
 
 
     <Button
-        android:id="@+id/green"
+        android:id="@+id/soil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -101,12 +101,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toEndOf="@+id/red"
+        app:layout_constraintStart_toEndOf="@+id/temp"
         app:layout_constraintTop_toBottomOf="@+id/btn_off"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/blue"
+        android:id="@+id/hum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -120,7 +120,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/green"
+        app:layout_constraintStart_toEndOf="@+id/soil"
         app:layout_constraintTop_toBottomOf="@+id/btn_off"
         app:layout_constraintVertical_bias="1.0" />
 

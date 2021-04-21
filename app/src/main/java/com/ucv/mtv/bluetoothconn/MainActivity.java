@@ -33,9 +33,9 @@ public class MainActivity extends Activity {
     private Button btnPrint;
     private Button btnON;
     private Button btnOFF;
-    private Button btnBlue;
-    private Button btnGreen;
-    private Button btnRed;
+    private Button btnHum;
+    private Button btnSoil;
+    private Button btnTemp;
     private boolean mIsBluetoothConnected = false;
     private BluetoothDevice mDevice;
     private ProgressDialog progressDialog;
@@ -57,9 +57,10 @@ public class MainActivity extends Activity {
         btnPrint = (Button) findViewById(R.id.btnPrint);
         btnON = (Button) findViewById(R.id.btnOn);
         btnOFF = (Button) findViewById(R.id.btn_off);
-        btnBlue = (Button) findViewById(R.id.blue);
-        btnGreen = (Button) findViewById(R.id.green);
-        btnRed = (Button) findViewById(R.id.red);
+        btnHum = (Button) findViewById(R.id.hum);
+        btnSoil = (Button) findViewById(R.id.soil);
+        btnTemp = (Button) findViewById(R.id.temp);
+
 
         btnOFF.setOnClickListener(new OnClickListener() {
 
@@ -84,7 +85,7 @@ public class MainActivity extends Activity {
         });
 
 
-        btnRed.setOnClickListener(new OnClickListener() {
+        btnTemp.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -98,7 +99,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        btnGreen.setOnClickListener(new OnClickListener() {
+        btnSoil.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -111,7 +112,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        btnBlue.setOnClickListener(new OnClickListener() {
+        btnHum.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -128,6 +129,7 @@ public class MainActivity extends Activity {
         createNotificationChannel();
 
     }
+
 
     private class ReadInput implements Runnable {
 
@@ -154,7 +156,7 @@ public class MainActivity extends Activity {
                     if (inputStream.available() > 0) {
                         inputStream.read(buffer);
                         int i = 0;
-
+                        //counts the buffer lenght for a correct printing
                         for (i = 0; i < buffer.length && buffer[i] != 0; i++) {
                         }
                         final String strInput = new String(buffer, 0, i);
